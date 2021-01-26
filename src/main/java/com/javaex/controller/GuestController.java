@@ -96,7 +96,7 @@ public class GuestController {
 			 model.addAttribute("no",guestVo.getNo()); //no값을 따로 보내줘야함. deform에 필요			
 			 return "redirect:/guest/deform"; 			 
 		}else {//삭제성공			
-			model.addAttribute("count",count);			
+			//model.addAttribute("count",count);			
 			return "redirect:/guest/addList";
 		} 
 		
@@ -115,15 +115,15 @@ public class GuestController {
 		
 		if(count == 0) { //삭제실패
 			 System.out.println("비밀번호가 틀립니다.");
-			 
-			 model.addAttribute("count",count);
-			 model.addAttribute("no",guestVo.getNo()); //no값을 따로 보내줘야함. deform에 필요
+			 //model은 포워드 개념이라서 이렇게 쓰면 안됨 --> 내부 jsp
+			 //model.addAttribute("count",count);
+			 //model.addAttribute("no",guestVo.getNo()); //no값을 따로 보내줘야함. deform에 필요
 			
-			 return "redirect:/guest/deform"; 
+			 return "redirect:/guest/deform?no=" + guestVo.getNo() + "&count=" + count ; 
 			 
 		}else {//삭제성공
 			
-			model.addAttribute("count",count);
+			//model.addAttribute("count",count);
 			
 			return "redirect:/guest/addList";
 		} 
